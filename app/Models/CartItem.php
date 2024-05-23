@@ -1,0 +1,42 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class CartItem extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'cart_id',
+        'product_id',
+        'quantity',
+        'product_color_id',
+    ];
+
+    protected $appends = [
+        'product_name',
+    ];
+
+    public function cart()
+    {
+        return $this->belongsTo(Cart::class);
+    }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+
+    public function getProductNameAttribute()
+    {
+        return $this->product->name;
+    }
+
+    public function productColor()
+    {
+        return $this->belongsTo(ProductColor::class);
+    }
+}
