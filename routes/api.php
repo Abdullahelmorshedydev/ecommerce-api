@@ -53,7 +53,7 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 
     ########### Admin Routes ###########
-    Route::prefix('/admin')->as('admin.')->group(function () {
+    Route::middleware('is.admin')->prefix('/admin')->as('admin.')->group(function () {
         Route::apiResource('categories', CategoryController::class);
         Route::apiResource('products', ProductController::class);
         Route::apiResource('productReviews', ProductReviewController::class);

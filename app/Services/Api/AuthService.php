@@ -24,6 +24,7 @@ class AuthService
     public function register($data)
     {
         $data['password'] = Hash::make($data['password']);
+        $data['role'] = 1;
         $user = User::create($data);
         $user['token'] = $user->createToken('Api Token Of ' . $user->name)->plainTextToken;
         return $user;
