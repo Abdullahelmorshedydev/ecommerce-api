@@ -19,7 +19,7 @@ class IsAdmin
     public function handle(Request $request, Closure $next): Response
     {
         if (auth()->user()->role != 2) {
-            abort($this->apiResponse(['api_code' => 401], 'Unauthorized',[],401));
+            abort($this->apiResponse(['api_code' => 401], 'Emsk 7ramy, Af4tk raye7 feen :)',[],401));
         }
         return $next($request);
     }
